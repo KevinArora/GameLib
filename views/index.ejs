@@ -1,57 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <link rel="stylesheet" href="">
-<style>
-  .stream {
-    position: absolute;
-    top:20%;
-    left:50%;
-  }
-</style>
-</head>
-<body>
-<h1>HELLO</h1>
-<form action="/" method='GET'>
-  <input type='text' name='game' placeholder='search a game'>
-  <input type="submit" value='submit'>
-</form>
-<div style='width: 650px; height: 400px;overflow-y: auto; overflow-x: hidden;'>
-<div>
-  <h1><%= result.results[0].name%></h1>
-  <h3>Releases:</h3>
-  <h4><%= result.results[0].aliases%></h4>
-  <img src="<%= result.results[0].image.small_url%>" alt="">
-  <div class="review">
-
-  </div></br>
-<%= result.results[0].deck %>
-</div>
-<div class="test">
-  <%- result.results[0].description %>
-</div>
-</div>
-<div class="stream">
-      <iframe
-        src="http://player.twitch.tv/?channel=<%=stream.streams[0].channel.name%>"
-        height="360"
-        width="640"
-        frameborder="0"
-        scrolling="no"
-        allowfullscreen="true">
-    </iframe>
-
-
- <!-- <iframe frameborder="0"
-         scrolling="no"
-         id="chat_embed"
-         src="http://twitch.tv/chat/embed?channel=<%=stream.streams[0].channel.name%>&amp;popout_chat=true"
-         height="{HEIGHT}"
-         width="{WIDTH}">
- </iframe> -->
-</div>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>Home</h1>
+    <header>
+      <nav>
+        <a href="/signup">Sign Up</a>
+        <a href="/login">Log In</a>
+        <a href="/guest">Guest?</a>
+      </nav>
+    </header>
+  </body>
 </html>
