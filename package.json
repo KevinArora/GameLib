@@ -2,6 +2,9 @@
   "name": "project-2",
   "version": "1.0.0",
   "description": "lets the user compile all data on a searched game",
+  "engines": {
+    "node": "6.6.0"
+  },
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
