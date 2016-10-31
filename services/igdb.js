@@ -1,14 +1,16 @@
 const fetch = require('node-fetch');
 
-const API_URL = 'https://itunes.apple.com/search?';
+const API_URL = 'https://www.giantbomb.com/api/search?json_callback=JSON_CALLBACK&api_key=${API_KEY}&format=jsonp&resources=game&limit=1&query=';
 
 
-function itunesSearch(req, res, next) {
-
-  fetch(`${API_URL}term=${req.body.searchTerm}&entity=album&medium=music`)
+function igdbSearch(req, res, next) {
+const game = req.query.game;
+console.log(game)
+  fetch(`https://www.giantbomb.com/api/search?json_callback=JSON_CALLBACK&api_key=ecf2a23ade0df5e6eb1a0e29ee29e0f1738c9553&format=json&resources=game&limit=1&query=${game}`)
   .then(r => r.json())
   .then((data) => {
-    res.result = data.results;
+    res.result = data;
+    console.log(data)
     next();
   })
   .catch(err => {
@@ -19,5 +21,8 @@ function itunesSearch(req, res, next) {
 
 
 module.exports = {
-  itunesSearch,
+  igdbSearch,
 };
+
+
+
