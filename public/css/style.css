@@ -1,22 +1,28 @@
 body {
-  background-color: red;
+  background: url(../../mainbg.jpg) no-repeat center center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
 }
 .search {
-  background-color: white;
+  background-color: rgba(255,255,255,.5);
+  border-radius: 15px;
 }
 .stream {
   position: absolute;
   top:17%;
   left:50%;
-  background-color: white;
+  background-color: rgba(255,255,255,.8);
   border border-radius: 15px;
   padding:15px;
 }
 
 
 .favimage{
-  width:200px;
+  width:150px;
   height:200px;
+
 }
 .info{
   width: 650px;
@@ -27,4 +33,24 @@ body {
 
 .description{
   background-color: white;
+}
+.welcome{
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+#favorites{
+  padding:10px;
+  background-color: rgba(255,255,255,.8);
+  border border-radius: 25px;
+}
+.favtext{
+  font-family: 'Lato', sans-serif;
+
+}
+.release{
+  color: white;
+  position:absolute;
+  font-family: 'Proza Libre', sans-serif;
+  left:73%;
+  top:5%;
 }

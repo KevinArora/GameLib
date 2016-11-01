@@ -5,12 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
   <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Proza+Libre" rel="stylesheet">
 </head>
 <body>
+<h2 class='release'>Release Date: October 25</h2>
 <form action="/auth?_method=DELETE" method="post">
       <input type="submit" value="Logout">
     </form>
-<h1>Welcome! <%= user.username %></h1>
+<h1 class='welcome'>Welcome! <%= user.username %></h1>
 <form action="/users/profile" method='GET'>
   <input type='text' name='game' placeholder='search a game'>
   <input type="submit" value='submit'>
@@ -45,7 +48,7 @@
     <% } %>
 </div>
   <div id="favorites">
-    <h2><%= user.username %>'s Favorites:</h2>
+    <h2 class='favtext'><%= user.username %>'s Favorites:</h2>
     <% favorites.forEach((fave) => { %>
       <div class="fave">
         <img class='favimage' src="<%= fave.gameImage %>" alt="">

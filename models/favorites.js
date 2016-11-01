@@ -60,5 +60,22 @@ function deleteFavorites(req, res, next) {
   });
   return false;
 }
+function editFavorites(req,res,next){
+  getDB().then((db) => {
+    db.collection('favorites')
+    .findAndModify({ _id: ObjectID(req.params.id) }, [] /* sort */,
+      { $set: req.body.movie }, { new: true } /* options */, (updateError, doc) => {
+        if (updateError) return next(updateError);
 
-module.exports = { getFavorites, saveFavorite, deleteFavorites };
+        // return the data
+        res.updated = doc;
+        db.close();
+        return next();
+      });
+    return false;
+  });
+  return false;
+}
+
+
+module.exports = { getFavorites, saveFavorite, deleteFavorites, editFavorites };
