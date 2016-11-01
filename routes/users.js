@@ -6,7 +6,7 @@ const { authenticate }   = require('../lib/auth');
 const { igdbSearch } = require('../services/igdb');
 const { twitchSearch } = require('../services/twitch')
 const { getFavorites, saveFavorite, deleteFavorites } = require('../models/favorites')
-
+const { saveToDB } = require('../models/history')
 const usersRouter  = express.Router();
 
 let streams = [
@@ -77,7 +77,7 @@ usersRouter.post('/', createUser, (req, res) => {
  * It redirects to /login when attempted to be reached by a non logged in user
  * It is "protected" by the authenticate middleware from the auth library
  */
-usersRouter.get('/profile', authenticate, igdbSearch, twitchSearch, getFavorites, (req, res) => {
+usersRouter.get('/profile', authenticate, igdbSearch, twitchSearch, saveToDB, getFavorites, (req, res) => {
 
 
   res.render('users/profile', {
