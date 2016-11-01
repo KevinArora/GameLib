@@ -4,14 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
-  <link rel="stylesheet" href="">
-<style>
-  .stream {
-    position: absolute;
-    top:20%;
-    left:50%;
-  }
-</style>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <form action="/auth?_method=DELETE" method="post">
@@ -22,18 +15,14 @@
   <input type='text' name='game' placeholder='search a game'>
   <input type="submit" value='submit'>
 </form>
-<div style='width: 650px; height: 400px;overflow-y: auto; overflow-x: hidden;'>
-<div>
+<div class='info' style=''>
+<div class='search'>
   <h1><%= result.results[0].name%></h1>
   <h3>Releases:</h3>
   <h4><%= result.results[0].aliases%></h4>
-  <img src="<%= result.results[0].image.small_url%>" alt="">
-  <div class="review">
-
-  </div></br>
+  <img src="<%= result.results[0].image.small_url%>" alt=""></br>
 <%= result.results[0].deck %>
-</div>
-<div class="test">
+</br>
   <%- result.results[0].description %>
 </div>
 </div>
@@ -44,7 +33,6 @@
   </form>
 
 <div class="stream">
-<button class="next">next</button>
     <% if (stream.streams[0]) { %>
       <iframe
         src="http://player.twitch.tv/?channel=<%= stream.streams[0].channel.name %>"
@@ -55,12 +43,12 @@
         allowfullscreen="true">
     </iframe>
     <% } %>
-
+</div>
   <div id="favorites">
     <h2><%= user.username %>'s Favorites:</h2>
     <% favorites.forEach((fave) => { %>
       <div class="fave">
-        <img src="<%= fave.gameImage %>" alt="">
+        <img class='favimage' src="<%= fave.gameImage %>" alt="">
         <p><%= fave.gameName %></p>
         <form action="/users/profile/<%= fave._id %>?_method=DELETE" method="POST">
           <input type="submit" value="Delete">
