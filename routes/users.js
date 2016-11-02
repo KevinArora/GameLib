@@ -9,7 +9,7 @@ const { getFavorites, saveFavorite, deleteFavorites } = require('../models/favor
 const { saveToDB } = require('../models/history');
 
 const usersRouter  = express.Router();
-// dummy object
+// dummy object if nothing returns.
 let streams = [
   {
     _id: 23538846688,
@@ -78,6 +78,7 @@ usersRouter.post('/', createUser, (req, res) => {
  * It redirects to /login when attempted to be reached by a non logged in user
  * It is "protected" by the authenticate middleware from the auth library
  */
+ // all the APIs fire up here and favorites are loaded.
 usersRouter.get('/profile', authenticate, igdbSearch, twitchSearch, saveToDB, getFavorites, (req, res) => {
   res.render('users/profile', {
     user: res.user,
@@ -86,10 +87,11 @@ usersRouter.get('/profile', authenticate, igdbSearch, twitchSearch, saveToDB, ge
     favorites: res.favorites || [],
   });
 });
+// saves favorites
 usersRouter.post('/profile', saveFavorite, (req, res) => {
   res.redirect('/users/profile');
 });
-
+// deletes favorites
 usersRouter.delete('/profile/:id', deleteFavorites, (req, res) => {
   res.redirect('/users/profile');
 });
